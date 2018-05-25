@@ -155,6 +155,11 @@ void cv_broadcast(struct cv *cv, struct lock *lock);
 
 struct rwlock {
         char *rwlock_name;
+	struct lock *rwlock_lock;
+	struct wchan *rwlock_wchan;
+	volatile unsigned readcount;
+	volatile unsigned writecount;
+	volatile unsigned writereq;
         // add what you need here
         // (don't forget to mark things volatile as needed)
 };
